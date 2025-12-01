@@ -1,0 +1,47 @@
+# Safety Guardrails Configuration
+
+# Emergency detection
+enable_emergency_detection: true
+emergency_keywords:
+  - "chest pain"
+  - "difficulty breathing"
+  - "severe bleeding"
+  - "loss of consciousness"
+  - "stroke symptoms"
+  - "heart attack"
+  - "seizure"
+  - "severe allergic reaction"
+  - "suicidal"
+
+# Prohibited claims filtering
+enable_claim_filtering: true
+prohibited_claims:
+  - "cure cancer"
+  - "cure diabetes"
+  - "cure HIV"
+  - "miracle cure"
+  - "guaranteed results"
+
+# Dosage validation
+enable_dosage_validation: true
+max_dosage_threshold: 10.0  # Factor above normal max dose
+min_dosage_threshold: 0.1   # Factor below normal min dose
+
+# Confidence calibration
+confidence_threshold: 0.7
+low_confidence_message: "This information has low confidence. Please consult a healthcare professional."
+
+# Disclaimers
+add_disclaimers: true
+disclaimer_text: |
+  This information is for educational purposes only and should not replace 
+  professional medical advice. Always consult with a qualified healthcare provider 
+  for diagnosis and treatment.
+
+emergency_disclaimer: |
+  EMERGENCY: If you are experiencing a medical emergency, call emergency services 
+  immediately. Do not rely on this system for emergency medical advice.
+
+# Logging
+log_safety_events: true
+safety_log_path: "logs/safety_events.log"

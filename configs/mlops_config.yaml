@@ -1,0 +1,44 @@
+# MLOps Configuration
+
+# MLflow
+use_mlflow: true
+mlflow_tracking_uri: "http://localhost:5000"
+mlflow_experiment_name: "medical-ai-assistant"
+mlflow_artifact_location: "mlruns"
+
+# DVC (Data Version Control)
+use_dvc: true
+dvc_remote: "local"
+dvc_cache_dir: ".dvc/cache"
+
+# Weights & Biases
+use_wandb: false
+wandb_project: "medical-ai-assistant"
+wandb_entity: ""  # Your W&B username/team
+
+# Model versioning
+model_registry: "mlflow"  # "mlflow" or "local"
+model_stage: "staging"  # "staging", "production", "archived"
+
+# Experiment tracking
+log_metrics: true
+log_parameters: true
+log_artifacts: true
+log_model: true
+
+# Performance monitoring
+enable_monitoring: true
+monitoring_interval: 60  # seconds
+alert_on_drift: true
+drift_threshold: 0.1
+
+# A/B Testing
+enable_ab_testing: false
+ab_test_config:
+  variant_a_ratio: 0.5
+  variant_b_ratio: 0.5
+
+# Paths
+models_dir: "models"
+experiments_dir: "experiments"
+artifacts_dir: "artifacts"

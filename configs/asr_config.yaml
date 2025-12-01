@@ -1,0 +1,32 @@
+# ASR Model Configuration
+
+# Whisper model name
+model_name: "openai/whisper-medium"
+
+# Language
+language: "en"
+task: "transcribe"
+
+# Training parameters
+batch_size: 8
+learning_rate: 1.0e-5
+num_epochs: 5
+weight_decay: 0.01
+warmup_steps: 500
+
+# Audio processing
+max_audio_length: 30  # seconds
+sample_rate: 16000
+chunk_length_s: 30
+
+# Medical vocabulary
+use_medical_vocabulary: true
+medical_vocab_path: "data/medical_vocabulary.txt"
+
+# Evaluation
+use_medical_wer: true
+medical_terms_path: "data/medical_terms.txt"
+
+# Paths
+model_save_dir: "models/asr"
+cache_dir: "cache"

@@ -1,0 +1,132 @@
+# API Configuration
+
+# Server settings
+host: "0.0.0.0"
+port: 8000
+reload: false  # Set to true for development
+workers: 4  # Number of worker processes
+log_level: "info"  # debug, info, warning, error, critical
+
+# Security
+jwt_secret_key: ${JWT_SECRET_KEY}  # Set in environment variables
+jwt_algorithm: "HS256"
+access_token_expire_minutes: 60
+
+# CORS settings
+cors:
+  enabled: true
+  allow_origins: ["*"]  # Configure appropriately for production
+  allow_credentials: true
+  allow_methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+  allow_headers: ["*"]
+
+# Rate limiting
+rate_limit:
+  enabled: false  # ← Disabled for testing
+  requests_per_minute: 60
+  burst_size: 10
+
+# Request limits
+request_limits:
+  max_text_length: 10000
+  max_batch_size: 100
+  max_upload_size_mb: 10
+
+# Model settings
+models:
+  lazy_loading: true  # Load models only when first requested
+  cache_models: true
+  
+  ner:
+    default_model: "transformer"  # transformer or bilstm_crf
+    enable_entity_linking: false
+    
+  classification:
+    default_threshold: 0.5
+    default_top_k: 3
+    
+  rag:
+    vector_store: "faiss"
+    use_hybrid_search: true
+    use_reranker: true
+    default_top_k: 5
+    enable_llm: true
+    enable_chain_of_thought: false
+    
+  safety:
+    enable_emergency_detection: true
+    enable_claim_filtering: true
+    enable_dosage_validation: true
+    enable_disclaimers: true
+    strict_mode: true
+
+# Monitoring
+monitoring:
+  enable_metrics: true
+  metrics_port: 9090
+  enable_tracing: false
+  
+# Logging
+logging:
+  level: "info"
+  format: "json"  # json or text
+  file: "logs/api.log"
+  max_size_mb: 100
+  backup_count: 5
+
+# Authentication - DISABLED FOR TESTING
+authentication:
+  required: false  # ← Changed from true to false
+  methods: ["jwt", "api_key"]
+  default_permissions: ["ner", "classification", "rag", "safety"]
+  
+# API Documentation
+docs:
+  enabled: true
+  title: "Medical AI Assistant API"
+  description: "Production API for medical NER, classification, RAG, and safety"
+  version: "1.0.0"
+  contact:
+    name: "API Support"
+    email: "support@medical-ai.com"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+
+# CORS
+cors_enabled: true
+cors_origins:
+  - "http://localhost:3000"
+  - "https://yourdomain.com"
+
+# Authentication
+enable_auth: false  # ← Changed from true to false
+jwt_secret_key: "${JWT_SECRET_KEY}"
+jwt_algorithm: "HS256"
+access_token_expire_minutes: 60
+refresh_token_expire_days: 30
+
+# Rate limiting
+enable_rate_limit: false  # ← Changed from true to false
+rate_limit_per_minute: 60
+rate_limit_per_hour: 1000
+
+# Monitoring
+enable_metrics: true
+metrics_port: 9090
+enable_tracing: false
+
+# API versioning
+api_version: "v1"
+api_prefix: "/api"
+
+# Request/Response
+max_request_size: 10485760  # 10 MB
+request_timeout: 30
+
+# Health checks
+health_check_interval: 30
+
+# Paths
+static_dir: "static"
+upload_dir: "uploads"

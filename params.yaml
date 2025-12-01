@@ -1,0 +1,17 @@
+prepare_data:
+  random_seed: 42
+  test_split: 0.1
+  train_split: 0.8
+  val_split: 0.1
+train_classifier:
+  batch_size: 16
+  learning_rate: 2.0e-05
+  model_name: bert-base-uncased
+  num_epochs: 10
+  use_focal_loss: true
+train_ner:
+  batch_size: 16
+  learning_rate: 2.0e-05
+  max_length: 128
+  model_name: bert-base-uncased
+  num_epochs: 10

@@ -1,0 +1,38 @@
+stages:
+  evaluate:
+    cmd: python scripts/evaluate_models.py
+    deps:
+    - models/ner
+    - models/classifier
+    - data/processed
+    metrics:
+    - evaluation/results.json
+  prepare_data:
+    cmd: python scripts/prepare_data.py
+    deps:
+    - data/raw
+    outs:
+    - data/processed
+  train_classifier:
+    cmd: python scripts/train_classifier.py --data-path data/processed --save-dir
+      models/classifier
+    deps:
+    - data/processed
+    - scripts/train_classifier.py
+    metrics:
+    - models/classifier/metrics.json
+    outs:
+    - models/classifier
+    params:
+    - configs/classifier_config.yaml
+  train_ner:
+    cmd: python scripts/train_ner.py --data-path data/processed --save-dir models/ner
+    deps:
+    - data/processed
+    - scripts/train_ner.py
+    metrics:
+    - models/ner/metrics.json
+    outs:
+    - models/ner
+    params:
+    - configs/ner_config.yaml

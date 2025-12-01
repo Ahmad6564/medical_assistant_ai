@@ -1,0 +1,37 @@
+# Clinical Classifier Configuration
+
+# Pre-trained model name
+model_name: "medicalai/ClinicalBERT"
+
+# Training parameters
+max_length: 256
+batch_size: 8
+learning_rate: 2.0e-5
+num_epochs: 10
+weight_decay: 0.01
+warmup_steps: 500
+
+# Multi-label classification
+num_labels: 8
+label_names:
+  - "progress_note"
+  - "discharge_summary"
+  - "consultation"
+  - "admission_note"
+  - "cardiology"
+  - "neurology"
+  - "oncology"
+  - "general_medicine"
+
+# Focal loss for class imbalance
+use_focal_loss: true
+focal_alpha: 0.25
+focal_gamma: 2.0
+
+# Model architecture
+dropout: 0.1
+hidden_dim: 768
+
+# Paths
+model_save_dir: "models/classifier"
+cache_dir: "cache"

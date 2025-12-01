@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+models/
+data/raw/
+data/processed/
+mlruns/
+wandb/
+.pytest_cache/
+.coverage
+*.log
+prompt.md/
+test.js/
+.env.mlflow

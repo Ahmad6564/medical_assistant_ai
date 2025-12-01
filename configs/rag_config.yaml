@@ -1,0 +1,42 @@
+# RAG System Configuration
+
+# Embedding model
+embedding_model: "sentence-transformers/all-mpnet-base-v2"
+embedding_dim: 768
+
+# Vector database
+vector_db: "faiss"  # "faiss" or "chromadb"
+vector_db_path: "data/vector_db"
+
+# Document processing
+chunk_size: 512
+chunk_overlap: 50
+max_chunks_per_doc: 100
+
+# Retrieval
+top_k: 5
+similarity_threshold: 0.7
+
+# Hybrid search (dense + sparse)
+use_hybrid_search: true
+bm25_weight: 0.3
+dense_weight: 0.7
+
+# Re-ranking
+use_reranker: true
+reranker_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+rerank_top_k: 10
+
+# Query processing
+use_query_expansion: true
+use_query_rewriting: true
+max_query_length: 256
+
+# Answer generation
+max_context_length: 2048
+include_sources: true
+min_confidence: 0.5
+
+# Paths
+medical_literature_path: "data/medical_literature"
+cache_dir: "cache"
